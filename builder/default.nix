@@ -106,7 +106,7 @@ let
 
         sources = toJSON (filterAttrs (n: _: n != defaultPackage) sources);
 
-        vendorModules = modulesStruct.vendorModulesTxt or "";
+        vendorModules = builtins.concatStringsSep (modulesStruct.vendorModulesTxt or []) "\n";
 
         passthru = {
           inherit sources;

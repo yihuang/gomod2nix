@@ -19,7 +19,7 @@ type Package struct {
 type Output struct {
 	SchemaVersion int                 `toml:"schema"`
 	Mod           map[string]*Package `toml:"mod"`
-	VendorModules string              `toml:"vendorModulesTxt"`
+	VendorModules []string            `toml:"vendorModulesTxt"`
 
 	// Packages with passed import paths trigger `go install` based on this list
 	SubPackages []string `toml:"subPackages,omitempty"`
@@ -30,7 +30,7 @@ type Output struct {
 
 type GeneratePkgsResult struct {
 	Packages   []*Package
-	ModulesTxt string
+	ModulesTxt []string
 }
 
 func Marshal(generated *GeneratePkgsResult, goPackagePath string, subPackages []string) ([]byte, error) {

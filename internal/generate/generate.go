@@ -246,7 +246,7 @@ func GeneratePkgs(directory string, goMod2NixPath string, numWorkers int) (*sche
 
 	return &schema.GeneratePkgsResult{
 		Packages:   packages,
-		ModulesTxt: string(modulesTxt),
+		ModulesTxt: strings.Split(modulesTxt, "\n"),
 	}, nil
 
 }
